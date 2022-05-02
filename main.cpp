@@ -3,43 +3,52 @@
 
 #include <iostream>
 
+#include <vector>
+#include <list>
+
+#define SIZE 100000
+
 int main(int argc, char **argv)
 {
-    // linked list with iterator
-    LinkedList<int> list;
+    std::vector<int> testV;
 
-    list.push(1);
-    list.push(2);
-    list.push(3);
-    list.push(4);
-    for (auto item : list)
+    for (size_t i = 0; i < SIZE; i++)
+        testV.push_back(i);
+
+    std::cout << "testV.size() = " << testV.size() << std::endl;
+
+    if (argc > 1)
     {
-        std::cout << item << std::endl;
+
+        std::cout << "Insetion linked List std" << std::endl;
+
+        std::list<int> list;
+
+        for (size_t i = 0; i < SIZE; i++)
+            list.emplace_back(i);
+
+        for (auto item : list)
+            std::cout << item << "\r";
+        printf("\n");
+
+        auto removedItem = list.remove(50);
+        std::cout << "removedItem = " << removedItem << std::endl;
     }
-
-    list.Remove(2);
-
-    for (auto item : list)
+    else
     {
-        std::cout << item << std::endl;
+        std::cout << "Insetion linked List" << std::endl;
+        // linked list with iterator
+        LinkedList<int> list;
+
+        for (size_t i = 0; i < SIZE; i++)
+            list.push(i);
+
+        for (auto item : list)
+            std::cout << item << "\r";
+        printf("\n");
+        auto removedItem = list.remove(50);
+        std::cout << "removedItem = " << removedItem << std::endl;
     }
-
-    BinaryTree<int> tree;
-    tree.insert(1);
-    tree.insert(2);
-    tree.insert(3);
-    tree.insert(4);
-    tree.insert(5);
-
-    tree.print();
-
-    BinaryTree<int> tree2(std::move(tree));
-
-    std::cout << "tree2" << std::endl;
-    tree2.print();
-
-    std::cout << "tree" << std::endl;
-    tree.print();
 
     return 0;
 }

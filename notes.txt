@@ -1,0 +1,2 @@
+LinkedList - 110 milesecons
+std::list - 108 milesecons

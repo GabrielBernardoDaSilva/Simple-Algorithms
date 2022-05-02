@@ -90,7 +90,7 @@ public:
         }
     };
 
-    constexpr inline T Remove(T data) noexcept
+    constexpr inline T remove(T data) noexcept
     {
         if (this->isEmpty())
         {
